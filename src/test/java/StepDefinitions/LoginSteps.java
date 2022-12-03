@@ -22,6 +22,7 @@ public class LoginSteps {
         dc.findAndSend("email","group2Techno@gmail.com");
         dc.findAndSend("password","Group2Password");
         dc.findAndClick("signInButton");
+
     }
 
     @Then("User should login successfully")

@@ -1,6 +1,7 @@
 package Pages;
 
 import Utils.GWD;
+import io.cucumber.messages.types.Duration;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -9,10 +10,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.time.Duration;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 public class Parents {
-    WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+
+    WebDriverWait wait=new WebDriverWait(GWD.getDriver(), java.time.Duration.ofSeconds(30));
     public void sendKeysFunction(WebElement element, String value)
     {
         waitUntilVisible(element); // gözükene kadar bekle
