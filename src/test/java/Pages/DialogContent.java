@@ -28,10 +28,11 @@ public class DialogContent extends Parents {
     @FindBy()
     private WebElement myAccountButton;
 
-    @FindBy()
+    @FindBy(xpath = "//button[@class='action-primary action-accept']/span")
     private WebElement okButton;
 
     //class="action save primary" olacak
+
     @FindBy()
     private WebElement saveButton;
 
@@ -72,6 +73,59 @@ public class DialogContent extends Parents {
     private WebElement updateCart;
 
 
+
+
+//********************************************************************************************
+
+
+    @FindBy(xpath = "//a[@class='action showcart']")
+    private WebElement Cart;
+
+    @FindBy(xpath = "//a[@class='action delete']/span")
+    private WebElement deleteButton;
+
+
+
+
+
+
+
+
+
+    @FindBy(xpath = "//span[text()='View and Edit Cart']")
+    private WebElement viewAndEditCart;
+
+    @FindBy(xpath = "//input[@class='input-text qty']")
+    private WebElement shoppingCartQuantity;
+
+    @FindBy(xpath = "//span[text()='Update Shopping Cart']")
+    private WebElement UpdateShoppingCart;
+
+    @FindBy(xpath = "//wtf[text()='22.00']")
+    private WebElement subtotal;
+//"Check subtotal value bigger than old value" geti yapılacak.....
+
+    @FindBy(xpath = "(//input[@type='number'])[1]")
+    private WebElement cartModuleQuantity;
+
+    @FindBy(xpath = "//span[text()='Update']")
+    private WebElement update;
+
+    @FindBy(xpath = "(//span[@class='counter-number'])")
+    private WebElement counterNumber;
+
+    @FindBy(css= "[class='subtitle empty']")
+    private WebElement verifyNoItem;
+
+
+    // Gettextini alıcaz.. Metot yapılacak.....
+
+
+
+
+
+
+    //********************************************************************************************
     WebElement myElement;
 
 
@@ -85,6 +139,13 @@ public class DialogContent extends Parents {
                 myElement = password;
                 break;
 
+            case "shoppingCartQuantity":
+                myElement = shoppingCartQuantity;
+                break;
+
+            case "cartModuleQuantity":
+                myElement = cartModuleQuantity;
+                break;
 
         }
         sendKeysFunction(myElement, value);
@@ -100,8 +161,46 @@ public class DialogContent extends Parents {
             case "signInButton":
                 myElement = signInButton;
                 break;
+            case "deleteButton":
+                myElement = deleteButton;
+                break;
+
+            case "okButton":
+                myElement = okButton;
+                break;
+
+            case "viewAndEditCart":
+                myElement = viewAndEditCart;
+                break;
+
+            case "UpdateShoppingCart":
+                myElement = UpdateShoppingCart;
+                break;
+
+            case "update":
+                myElement = update;
+                break;
+
+            case "Cart":
+                myElement = Cart;
+                break;
+
+
         }
         clickFunction(myElement);
+
+
+
+
+
+
+
+
+//********************************************************************************************
+
+
+
+
     }
 
     public void findAndContainsText(String strlement, String text) {
@@ -110,8 +209,17 @@ public class DialogContent extends Parents {
             case "loginSuccess":
                 myElement = loginSuccess;
                 break;
+            case "subtotal":
+                myElement = subtotal;
+                break;
+            case "verifyNoItem":
+                myElement = verifyNoItem;
+                break;
 
 
+
+
+            //"Check subtotal value bigger than old value" fiyatlar alınıp karşlılaştırılacak
         }
 
         verifyContainsTextFunction(myElement, text);
