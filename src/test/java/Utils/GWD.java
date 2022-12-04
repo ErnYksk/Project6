@@ -4,8 +4,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
-import org.slf4j.event.Level;
-import org.testng.log4testng.Logger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -21,16 +21,13 @@ public class GWD {
     public static WebDriver getDriver() {
 
         if (driver == null) {
-
+            Logger.getLogger("").setLevel(Level.SEVERE);
             System.setProperty(org.slf4j.simple.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "Error");
             System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-
 
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
-
-
         return driver;
     }
 

@@ -120,7 +120,7 @@ public class DataTableSteps extends Parents {
             for (int i = 0; i < productsName.size(); i++) {
                 if (productsName.get(i).getText().equalsIgnoreCase(strText)) {
                     productId = productsIdFinder.get(i).getAttribute("data-product-id");
-                    actions.moveToElement(GWD.getDriver().findElement(By.cssSelector("div[data-product-id='"+productId+"']:nth-child(1)"))).build().perform();
+                    actions.moveToElement(GWD.getDriver().findElement(By.cssSelector("div[class='product details product-item-details']>div[data-product-id='"+productId+"']"))).build().perform();
                     waitUntilClickable(GWD.getDriver().findElement(By.cssSelector(dl.itemBoxAddToWishListCSS(productId))));
                     GWD.getDriver().findElement(By.cssSelector(dl.itemBoxAddToWishListCSS(productId))).click();
                     break;
