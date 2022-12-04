@@ -14,10 +14,10 @@ public class DialogContent extends Parents {
     @FindBy(xpath = "(//ul[@class='header links']//a)[1]")
     private WebElement signIn;
 
-    @FindBy(css = "input[id='email']")
+    @FindBy(id = "email")
     private WebElement email;
 
-    @FindBy(css = "input[id='pass'][name='login[password]']")
+    @FindBy(id = "pass")
     private WebElement password;
 
     @FindBy(xpath = "(//li[@class='greet welcome']//span)[1]")
@@ -28,7 +28,7 @@ public class DialogContent extends Parents {
     @FindBy()
     private WebElement myAccountButton;
 
-    @FindBy(xpath = "//button[@class='action-primary action-accept']/span")
+    @FindBy(css = "button[class='action-primary action-accept']>span")
     private WebElement okButton;
 
     //class="action save primary" olacak
@@ -52,13 +52,16 @@ public class DialogContent extends Parents {
     private WebElement orderButton;
 
     @FindBy()
-    private WebElement removeItemButton;
+    private WebElement removeButton;
 
-    @FindBy()
+    @FindBy(css = "a[title='Remove Product']:nth-child(1)")
     private WebElement removeProductButton;
 
     @FindBy(xpath = "//button[@title='Add to Cart']")
     private WebElement addToCart;
+
+    @FindBy(xpath = "//button[@title='Add All to Cart']")
+    private WebElement addAllToCart;
 
     @FindBy()
     private WebElement optionSize;
@@ -72,25 +75,29 @@ public class DialogContent extends Parents {
     @FindBy()
     private WebElement updateCart;
 
+    @FindBy(id = "search")
+    private WebElement searchBox;
 
+    @FindBy(css = "button[title='Search']")
+    private WebElement searchButton;
 
+    @FindBy(css = "li[class='item product product-item']:nth-child(1)")
+    private WebElement productItem;
 
-//********************************************************************************************
+    @FindBy(css = "a[class='action tocompare']")
+    private WebElement addToCompare;
 
+    @FindBy(xpath = "//div[@role='alert']//div/div[1]")
+    private WebElement checkText;
+
+    @FindBy(css = "span[data-bind='text: compareProducts().countCaption']")
+    private WebElement comparePage;
 
     @FindBy(xpath = "//a[@class='action showcart']")
     private WebElement Cart;
 
     @FindBy(xpath = "//a[@class='action delete']/span")
     private WebElement deleteButton;
-
-
-
-
-
-
-
-
 
     @FindBy(xpath = "//span[text()='View and Edit Cart']")
     private WebElement viewAndEditCart;
@@ -114,18 +121,8 @@ public class DialogContent extends Parents {
     @FindBy(xpath = "(//span[@class='counter-number'])")
     private WebElement counterNumber;
 
-    @FindBy(css= "[class='subtitle empty']")
+    @FindBy(css = "[class='subtitle empty']")
     private WebElement verifyNoItem;
-
-
-    // Gettextini alıcaz.. Metot yapılacak.....
-
-
-
-
-
-
-    //********************************************************************************************
     WebElement myElement;
 
 
@@ -134,25 +131,19 @@ public class DialogContent extends Parents {
             case "email":
                 myElement = email;
                 break;
-
             case "password":
                 myElement = password;
                 break;
-
             case "shoppingCartQuantity":
                 myElement = shoppingCartQuantity;
                 break;
-
-            case "cartModuleQuantity":
-                myElement = cartModuleQuantity;
+            case "searchBox":
+                myElement = searchBox;
                 break;
 
         }
         sendKeysFunction(myElement, value);
-
-
     }
-
     public void findAndClick(String strElement) {
         switch (strElement) {
             case "signIn":
@@ -164,43 +155,47 @@ public class DialogContent extends Parents {
             case "deleteButton":
                 myElement = deleteButton;
                 break;
-
+            case "searchButton":
+                myElement = searchButton;
+                break;
+            case "productItem":
+                myElement = productItem;
+                break;
+            case "addToCompare":
+                myElement = addToCompare;
+                break;
+            case "comparePage":
+                myElement = comparePage;
+                break;
+            case "removeProductButton":
+                myElement = removeProductButton;
+                break;
             case "okButton":
                 myElement = okButton;
+                break;
+
+            case "addToCart":
+                myElement = addToCart;
+                break;
+
+            case "addAllToCart":
+                myElement = addAllToCart;
                 break;
 
             case "viewAndEditCart":
                 myElement = viewAndEditCart;
                 break;
-
             case "UpdateShoppingCart":
                 myElement = UpdateShoppingCart;
                 break;
-
             case "update":
                 myElement = update;
                 break;
-
             case "Cart":
                 myElement = Cart;
                 break;
-
-
         }
         clickFunction(myElement);
-
-
-
-
-
-
-
-
-//********************************************************************************************
-
-
-
-
     }
 
     public void findAndContainsText(String strlement, String text) {
@@ -209,19 +204,17 @@ public class DialogContent extends Parents {
             case "loginSuccess":
                 myElement = loginSuccess;
                 break;
+            case "checkText":
+                myElement = checkText;
+                break;
             case "subtotal":
                 myElement = subtotal;
                 break;
             case "verifyNoItem":
                 myElement = verifyNoItem;
                 break;
-
-
-
-
             //"Check subtotal value bigger than old value" fiyatlar alınıp karşlılaştırılacak
         }
-
         verifyContainsTextFunction(myElement, text);
     }
 }
