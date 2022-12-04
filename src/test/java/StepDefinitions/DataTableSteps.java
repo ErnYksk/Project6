@@ -100,7 +100,7 @@ public class DataTableSteps extends Parents {
         List<String> listElements = elements.asList(String.class);
         for (String strText : listElements) {
             for (int i = 0; i < productsName.size(); i++) {
-                if (productsName.get(i).getText().equalsIgnoreCase(strText)) {
+                if (productsName.get(i).getText().trim().equalsIgnoreCase(strText)) {
                     productId = productsIdFinder.get(i).getAttribute("data-product-id");
                     actions.moveToElement(GWD.getDriver().findElement(By.cssSelector("div[data-product-id='"+productId+"']:nth-child(1)"))).build().perform();
                     GWD.getDriver().findElement(By.xpath(dl.itemBoxOptionXPath(productId, option))).click();
@@ -118,7 +118,7 @@ public class DataTableSteps extends Parents {
         List<String> listElements = elements.asList(String.class);
         for (String strText : listElements) {
             for (int i = 0; i < productsName.size(); i++) {
-                if (productsName.get(i).getText().equalsIgnoreCase(strText)) {
+                if (productsName.get(i).getText().trim().equalsIgnoreCase(strText)) {
                     productId = productsIdFinder.get(i).getAttribute("data-product-id");
                     actions.moveToElement(GWD.getDriver().findElement(By.cssSelector("div[class='product details product-item-details']>div[data-product-id='"+productId+"']"))).build().perform();
                     waitUntilClickable(GWD.getDriver().findElement(By.cssSelector(dl.itemBoxAddToWishListCSS(productId))));
@@ -137,7 +137,7 @@ public class DataTableSteps extends Parents {
         List<String> listElements = elements.asList(String.class);
         for (String strText : listElements) {
             for (int i = 0; i < productsName.size(); i++) {
-                if (productsName.get(i).getText().equalsIgnoreCase(strText)) {
+                if (productsName.get(i).getText().trim().equalsIgnoreCase(strText)) {
                     product = productsAddToCart.get(i).getAttribute("data-product-sku");
                     System.out.println(product.toLowerCase());
                     actions.moveToElement(GWD.getDriver().findElement(By.xpath("//div[@class='products wrapper grid products-grid']//img[contains(@src,'"+product.toLowerCase()+"')]"))).build().perform();
@@ -157,10 +157,27 @@ public class DataTableSteps extends Parents {
         List<String> listElements = elements.asList(String.class);
         for (String strText : listElements) {
             for (int i = 0; i < productsName.size(); i++) {
-                if (productsName.get(i).getText().equalsIgnoreCase(strText)) {
+                if (productsName.get(i).getText().trim().equalsIgnoreCase(strText)) {
                     productId = productsId.get(i).getAttribute("id").replaceAll("\\D","");
                     actions.moveToElement(GWD.getDriver().findElement(By.cssSelector("li[id='item_"+productId+"']>div>strong[class='product-item-name']"))).build().perform();
                     GWD.getDriver().findElement(By.cssSelector(dl.wishListAddToCartCSS(productId))).click();
+                    break;
+                }
+            }
+        }
+    }
+
+    @And("Click remove that item in the Compare Page")
+    public void clickRemoveThatItemInTheComparePage(DataTable elements) {
+        String productId;
+        List<WebElement> productsName = GWD.getDriver().findElements(By.cssSelector("td[class='cell product info']>strong[class='product-item-name']"));
+        List<WebElement> productsIdFinder = GWD.getDriver().findElements(By.cssSelector("div[class='price-box price-final_price']"));
+        List<String> listElements = elements.asList(String.class);
+        for (String strText : listElements) {
+            for (int i = 0; i < productsName.size(); i++) {
+                if (productsName.get(i).getText().trim().equalsIgnoreCase(strText)) {
+                    productId = productsIdFinder.get(i).getAttribute("data-product-id");
+                    GWD.getDriver().findElement(By.cssSelector(dl.itemBoxRemoveButtonCSS(productId))).click();
                     break;
                 }
             }

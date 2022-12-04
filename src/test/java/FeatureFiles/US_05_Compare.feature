@@ -33,9 +33,13 @@ Feature: Compare Functionality
       | <addedMessage> |
 
     And Click on the element in the Dialog
-      | comparePage         |
-      | removeProductButton |
-      | okButton            |
+      | comparePage |
+
+    And Click remove that item in the Compare Page
+      | <productName> |
+
+    And Click on the element in the Dialog
+      | okButton |
 
     Then User should see the this message
       | <removedMessage> |

@@ -23,4 +23,8 @@ public class DynamicLocator {
     public String wishListAddToCartCSS(String element) {
         return "button[data-item-id='" + element + "']";
     }
+    public String itemBoxRemoveButtonCSS(String element) {
+        return "a[data-post*='"+element+"'][class*='delete']";
+    }
+
 }
