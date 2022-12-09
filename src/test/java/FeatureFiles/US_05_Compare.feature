@@ -6,15 +6,15 @@ Feature: Compare Functionality
     Then User should login successfully
 
   Scenario Outline: US_05_01 - Add to Compare Functionality
-    And User sending the keys in Dialog content
+    And User sending the keys in US_05_Dialog
       | searchBox | <productName> |
 
-    And Click on the element in the Dialog
+    And Click on the element in US_05_Dialog
       | searchButton |
       | productItem  |
       | addToCompare |
 
-    Then User should see the this message
+    Then User should see the this message in US_05_Dialog
       | <message> |
 
     Examples:
@@ -22,22 +22,26 @@ Feature: Compare Functionality
       | Radiant Tee | added   |
 
   Scenario Outline: US_05_02 - Remove Product From Compare Page Functionality
-    And User sending the keys in Dialog content
+    And User sending the keys in US_05_Dialog
       | searchBox | <productName> |
 
-    And Click on the element in the Dialog
+    And Click on the element in US_05_Dialog
       | searchButton |
       | productItem  |
       | addToCompare |
-    Then User should see the this message
+    Then User should see the this message in US_05_Dialog
       | <addedMessage> |
 
-    And Click on the element in the Dialog
-      | comparePage         |
-      | removeProductButton |
-      | okButton            |
+    And Click on the element in US_05_Dialog
+      | comparePage |
 
-    Then User should see the this message
+    And Click remove that item at Compare Page in US_05_Dialog
+      | <productName> |
+
+    And Click on the element in US_05_Dialog
+      | okButton |
+
+    Then User should see the this message in US_05_Dialog
       | <removedMessage> |
 
     Examples:
@@ -45,31 +49,31 @@ Feature: Compare Functionality
       | Radiant Tee | added        | removed        |
 
   Scenario Outline: US_05_03 - Add to Cart Item From Compare Page Functionality
-    And User sending the keys in Dialog content
+    And User sending the keys in US_05_Dialog
       | searchBox | <productName> |
 
-    And Click on the element in the Dialog
+    And Click on the element in US_05_Dialog
       | searchButton |
       | productItem  |
       | addToCompare |
 
-    Then User should see the this message
+    Then User should see the this message in US_05_Dialog
       | <message> |
 
-    And Click on the element in the Dialog
+    And Click on the element in US_05_Dialog
       | comparePage |
 
-    And Click on this product
+    And Click on this product in US_05_Dialog
       | <productName> |
 
-    And Choose option in product
+    And Choose option in product in US_05_Dialog
       | <size>  |
       | <color> |
 
-    And Click on the element in the Dialog
+    And Click on the element in US_05_Dialog
       | addToCart |
 
-    Then User should see the this message
+    Then User should see the this message in US_05_Dialog
       | <message> |
 
     Examples:

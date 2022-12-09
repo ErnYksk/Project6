@@ -1,15 +1,15 @@
 package StepDefinitions;
 
-import Pages.DialogContent;
+import Pages.US_04_DialogContent;
 import Utils.GWD;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 
-public class LoginSteps {
+public class US_00_LoginSteps {
 
-    DialogContent dc=new DialogContent();
+    US_04_DialogContent dc =new US_04_DialogContent();
     @Given("Navigate to Luma website")
     public void navigateToLumaWebsite() {
         GWD.getDriver().get("https://magento.softwaretestingboard.com/");
